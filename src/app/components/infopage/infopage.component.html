@@ -1,0 +1,61 @@
+<div class="container" id="info" *ngIf="data">
+
+   <!-- Detail -->
+   <div class="row" id="detail">
+      <div class="col-sm-4 detail-left">
+         <div class="">
+            <img [src]="imageUrl"  style="width: 200px; height: 270px;">
+         </div>
+         <div id="info1">
+            <ul>
+               <li class="author">
+                  <i class="fa fa-user"></i><span>{{data.author}}</span>
+               </li>
+               <li class="kindStory">
+                  <i class="fa fa-tags"></i><span>{{data.kindStory}}</span>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <div class="col-sm-8  detail-right">
+         <h3>{{data.storyName}}</h3>
+         <label style="white-space:pre-wrap;" [innerHtml]="data.introduction"></label>
+      </div>
+   </div>
+   <!-- Listchapter -->
+   <div class="row" id="listchapter">
+      <div class="list">
+         <h5><i class="fa fa-list"></i> DANH SÁCH CHƯƠNG</h5>
+         <ul class="">
+            <li  *ngFor=" let chapter of data.chapter">
+               <a class="nav-link" (click)="onSelectChapter(chapter.number)">Chương {{chapter.number}}: {{chapter.name}}</a>
+            </li>
+         </ul>
+      </div>
+   </div>
+   <!-- Comment -->
+   <div class="row" id="comments">
+      <div class="content">
+         <h5><i class="fa fa-comments"></i> BÌNH LUẬN THÀNH VIÊN</h5>
+         <div class="comment-content">
+            <button id="bt_a_d_fs" click="openLogin" class="w3-btn w3-round w3-blue w3-hover-white"><i class="fa fa-sign-in"></i> Đăng nhập
+            </button>
+            <input type="hidden" name="storyid-hidden" id="storyid-hidden" value="109"/> <input type="hidden" name="comment-cate" id="comment-cate" value="0"/> 
+            <div id="comment-list">
+               <div class="comment-row" id="comment">
+                  <div class="w3-left comment-left">
+                     
+                  </div>
+                  <div class="comment-right">
+                     <a class="comment-user" href="#" rel="nofollow" title=""></a>
+                     <span class="comment-date"></span>
+                     <div class="comment-chat"></div>
+                  </div>
+               </div>
+            </div>
+            <div id="lastPostsLoader"></div>
+           <!--  <div class="w3-center comment-more"><button id="loadMoreComment" click="loadListComment()" class="w3-btn w3-round-xlarge w3-grey w3-hover-white"><i class="fa fa-chevron-down"></i> Xem thêm</button></div> -->
+         </div>
+      </div>
+   </div>
+</div>

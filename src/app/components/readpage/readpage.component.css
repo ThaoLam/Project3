@@ -1,0 +1,71 @@
+    .chapterbutton a {
+		text-decoration: none;
+		display: inline-block;
+		padding: 8px 16px;
+		margin-top: 5px;
+	}
+
+	.chapterbutton a:hover {
+			background-color: #ddd;
+			color: black;
+		}
+
+	.chapterbutton .previous {
+		background-color: #4CAF50;
+		color: white;
+		width: 100px;
+		text-align: center;
+	}
+
+	.chapterbutton .next {
+		background-color: #4CAF50;
+		color: white;
+		width: 100px;
+		text-align: center;
+	}
+	.chapterbutton .setting {
+		background-color: #f2f2f2;
+		width: 100px;
+		text-align: center;
+	}
+
+	.chapter-header {
+		padding: 12px 12px 0;
+	}
+
+		.chapter-header .namestory {
+			color: #ff4d4d;
+			font-weight: bold;
+			font-size: 30px;
+		}
+
+		.chapter-header .chapter {
+			color: #0446fc;
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+		.chapter-header h5 {
+			color: #808080;
+			text-align: center;
+		}
+		.chapter-header ul {
+			border: 2px dotted #ccc;
+			border-radius: 10px;
+			padding: 5px;
+		}
+
+	.w3-justify {
+		text-align: justify !important;
+		margin-top: 50px;
+		padding: 10px;
+	}
+	.w3-center {
+		text-align: center !important;
+	}
+
+	#main {
+		width: 900px;
+		margin: 10px auto 0;
+		background: white;
+	}

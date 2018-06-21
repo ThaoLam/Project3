@@ -1,0 +1,251 @@
+<div class="d-flex flex-row mt-2">
+   <ul class="nav nav-tabs nav-tabs--vertical nav-tabs--left" role="navigation">
+      <li class="nav-item">
+         <a href="#add" class="nav-link active" data-toggle="tab" role="tab" aria-controls="lorem">Thêm truyện</a>
+      </li>
+      <li class="nav-item">
+         <a href="#update" class="nav-link" data-toggle="tab" role="tab" aria-controls="ipsum">Sửa truyện</a>
+      </li>
+      <li class="nav-item">
+         <a href="#delete" class="nav-link" data-toggle="tab" role="tab" aria-controls="sit-amet">Xóa truyện</a>
+      </li>
+      <li class="nav-item">
+         <a href="#list" class="nav-link" data-toggle="tab" role="tab" aria-controls="sit-amet">Danh sách truyện</a>
+      </li>
+   </ul>
+   <div class="tab-content">
+      <div class="tab-pane fade show active" id="add" role="tabpanel">
+         <div class="row">
+            <div class="col-md-6 order-md-1 mb-4">
+               <h4 class="mb-3">Thêm truyện</h4>
+               <form class="needs-validation" novalidate id="formAdd" (submit)="onAddStorySubmit()" >
+                  <div class="row">
+                     <div class="col-md-6 mb-3">
+                        <label for="StoryName">Tên truyện</label>
+                        <input type="text" class="form-control" id="StoryName" required [(ngModel)]="storyName" name="storyName">
+                     </div>
+                     <div class="col-md-6 mb-3">
+                        <label for="Author">Tác giả</label>
+                        <input type="text" class="form-control" id="Author"  required [(ngModel)]="author" name="author">
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6 mb-3">
+                        <label for="numChapter">Số chương</label>
+                        <input type="text" class="form-control" id="numChapter" required [(ngModel)]="numberOfChapters" name="numberOfChapters">
+                     </div>
+                     <div class="col-md-6 mb-3">
+                        <label for="kindStory">Thể loại</label>
+                        <input type="text" class="form-control" id="kindStory" required [(ngModel)]="kindStory" name="kindStory">
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <label for="banner">Ảnh bìa</label>
+                        <input type="file" name="upload" id="banner" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+                     </div>
+                     <div class="col-md-6">
+                        <img [src]="imageUrl"  style="width: 100%; height: 100%; max-width: 150px;">
+
+                     </div>
+                  </div>
+                  <div class="mb-3">
+                     <label for="content">Giới thiệu</label>
+                     <br />
+                     <textarea name="content" style="width: 100%; height: 300px" id="introduction" required [(ngModel)]="introduction" name="introduction"></textarea>
+                  </div>
+                  <div>
+                     <button class="btn btn-primary" type="submit" >Thêm truyện</button>
+                     <button class="btn btn-primary" type="button" onclick="formAdd()" value="Reset form">Reset</button>
+                  </div>
+               </form>
+            </div>
+            <div class="col-md-6 order-md-2">
+               <h4 class="mb-3">Thêm nội dung truyện</h4>
+               <form class="needs-validation" novalidate id="formAddChapter" (submit)="onAddContentSubmit()">
+                  <div class="row">
+                     <div class="col-md-6 mb-3">
+                        <label for="nb_chapter">Tên truyện</label>
+                        <div class="dropdown">
+                           <select class="custom-select" required [(ngModel)]="storySelected" name="storySelected">
+                              <option *ngFor="let story of data">{{story.storyName}}</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6 mb-3">
+                        <label for="nb_chapter">Số chương</label>
+                        <input type="text" class="form-control" id="nb_chapter" placeholder="" required [(ngModel)]="number" name="
+                        number">
+                     </div>
+                     <div class="col-md-6 mb-3">
+                        <label for="name_chapter">Tên chương</label>
+                        <input type="text" class="form-control" id="name_chapter" placeholder="" required [(ngModel)]="name" name="name">
+                     </div>
+                  </div>
+                  <div class="mb-3">
+                     <label for="content">Nội dung</label>
+                     <br />
+                     <textarea name="content" style="width: 100%; height: 300px" required [(ngModel)]="content" name="content"></textarea>
+                  </div>
+                  <div>
+                     <button class="btn btn-primary" type="submit" >Thêm chương</button>
+                     <button class="btn btn-primary" type="button" onclick="formAddChapter()" value="Reset form">Reset</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      <div class="tab-pane fade" id="update" role="tabpanel">
+         <div class="row">
+            <div class="col-md-6 order-md-1 mb-4">
+               <h4 class="mb-3">Sửa truyện</h4>
+               <form class="needs-validation" novalidate (submit)="onAddStorySubmit()">
+                  <div class="row">
+                     <div class="col-md-6 mb-3">
+                        <label for="StoryName">Tên truyện</label>
+                        <div class="dropdown">
+                           <select class="custom-select" required [(ngModel)]="selectedStory" name="selectedStory" (change)="onSelect($event.target.value)">
+                              <option *ngFor="let story of data" >{{story.storyName}}</option>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="col-md-6 mb-3" *ngIf="dataStory">
+                        <label for="Author">Tác giả</label>
+                        <input type="text" class="form-control" id="Author"  required [(ngModel)]="dataStory.author" name="author">
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6 mb-3" *ngIf="dataStory">
+                        <label for="numChapter">Số chương</label>
+                        <input type="text" class="form-control" id="numChapter" required [(ngModel)]="dataStory.numberOfChapters" name="numberOfChapters">
+                     </div>
+                     <div class="col-md-6 mb-3" *ngIf="dataStory">
+                        <label for="kindStory">Thể loại</label>
+                        <input type="text" class="form-control" id="kindStory" required [(ngModel)]="dataStory.kindStory" name="kindStory">
+                     </div>
+                  </div>
+                  <div class="mb-3" *ngIf="dataStory">
+                     <label for="content">Giới thiệu</label>
+                     <br />
+                     <textarea name="content" style="width: 100%; height: 300px" id="introduction" required [(ngModel)]="dataStory.introduction" name="introduction"></textarea>
+                  </div>
+                  <div>
+                     <button class="btn btn-primary" type="submit">Sửa truyện</button>
+                     <button class="btn btn-primary" type="button">Reset</button>
+                  </div>
+               </form>
+            </div>
+            <div class="col-md-6 order-md-2">
+               <h4 class="mb-3">Sửa nội dung truyện</h4>
+               <form class="needs-validation" novalidate (submit)="onAddContentSubmit()">
+                  <div class="row">
+                     <div class="col-md-6 mb-3">
+                        <label for="nb_chapter">Tên truyện</label>
+                        <div class="dropdown">
+                           <select class="custom-select" required [(ngModel)]="selectedStory" name="selectedStory" (change)="onSelect($event.target.value)">
+                              <option *ngFor="let story of data">{{story.storyName}}</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6 mb-3">
+                        <label for="nb_chapter">Số chương</label>
+                        <div class="dropdown">
+                           <select class="custom-select" required [(ngModel)]="chapterSelected" name="chapterSelected">
+                              <option *ngFor="let chapter of dataChapter">{{chapter.number}}</option>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="col-md-6 mb-3">
+                        <label for="name_chapter">Tên chương</label>
+                        <input type="text" class="form-control" id="name_chapter" placeholder="" required [(ngModel)]="name" name="name">
+                     </div>
+                  </div>
+                  <div class="mb-3">
+                     <label for="content">Nội dung</label>
+                     <br />
+                     <textarea name="content" style="width: 100%; height: 300px" required [(ngModel)]="content" name="content"></textarea>
+                  </div>
+                  <div>
+                     <button class="btn btn-primary" type="submit">Sửa chương</button>
+                     <button class="btn btn-primary" type="button">Reset</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      <div class="tab-pane fade" id="delete" role="tabpanel">
+         <div class="row">
+            <div class="col-md-6 order-md-1 mb-4">
+               <h4 class="mb-3">Xóa truyện truyện</h4>
+               <form class="needs-validation" novalidate (submit)="onRemoveStorySubmit()">
+                  <div class="row">
+                     <div class="col-md-6 mb-3">
+                        <label for="StoryName">Tên truyện</label>
+                        <div class="dropdown">
+                           <select class="custom-select" required [(ngModel)]="storyRemove" name="storyRemove">
+                              <option *ngFor="let story of data">{{story.storyName}}</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+                  <div>
+                     <button class="btn btn-primary" type="submit">Xóa truyện</button>
+                  </div>
+               </form>
+            </div>
+            <div class="col-md-6 order-md-2">
+               <h4 class="mb-3">Xóa nội dung truyện</h4>
+               <form class="needs-validation" novalidate (submit)="onRemoveContentSubmit()">
+                  <div class="row">
+                     <div class="col-md-6 mb-3">
+                        <label for="nb_chapter">Tên truyện</label>
+                        <div class="dropdown">
+                           <select class="custom-select" required [(ngModel)]="storyRemove1" name="storyRemove1">
+                              <option *ngFor="let story of data">{{story.storyName}}</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6 mb-3">
+                        <label for="nb_chapter">Số chương</label>
+                        <input type="text" class="form-control" id="nb_chapter" placeholder="" required [(ngModel)]="numberdelete" name="
+                        numberdelete">
+                     </div>
+                  </div>
+                  <div>
+                     <button class="btn btn-primary" type="submit">Xóa chương</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      <div class="tab-pane fade" id="list" role="tabpanel">
+         <div class="row">
+            <div class="col-md-6 order-md-1">
+               <ul class="list">
+                  <li *ngFor="let story2 of data"  (click)="onSelect(story2.storyName)">
+                     {{story2.storyName}}
+                  </li>
+               </ul>
+            </div>
+            <div class="col-md-6 order-md-2">
+               <div *ngIf="dataStory">
+                  <h3>{{ dataStory.storyName | uppercase }} </h3>
+                  <ul>
+                     <li><span>Tên truyện: </span>{{dataStory.storyName}}</li>
+                     <li><span>Tác giả: </span>{{dataStory.author}}</li>
+                     <li><span>Số chương của truyện: </span>{{dataStory.numberOfChapters}}</li>
+                     <li><span>Thể loại: </span>{{dataStory.kindStory}}</li>
+                     <li><span>Giới thiệu: </span>{{dataStory.introduction}}</li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

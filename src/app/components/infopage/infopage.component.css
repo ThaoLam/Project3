@@ -1,0 +1,61 @@
+#info {
+	margin: 5px;
+	width: 800px;
+}
+#detail {
+	background: white;
+	margin: 10px;
+	padding-top: 15px;
+
+}
+.detail-right h3 {
+	text-align: center;
+}
+.detail-right label {
+	text-align: justify;
+}
+.detail-left i {
+	color: #999;
+}
+.detail-left span {
+	margin-left: 5px;
+}
+.detail-left #info1 {
+	margin-top: 10px;
+}
+.detail-left ul li {
+    letter-spacing: -0.5px;
+    border: none;
+}
+.detail-left ul {
+	padding-left: 5px;
+}
+#listchapter {
+	background: white;
+    margin: 10px;
+}
+#listchapter .list {
+	padding: 5px 15px;
+}
+h5 {
+	color: #0052cc;
+}
+#comments {
+	background: white;
+	margin: 10px;
+}
+#comments .content {
+    padding: 5px 15px;
+}
+ul {
+    padding-left: 5px;
+}
+.list a.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.list a:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}

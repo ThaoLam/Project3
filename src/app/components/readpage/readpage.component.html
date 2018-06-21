@@ -1,0 +1,98 @@
+<div id="main" class="w3-row" *ngFor="let chapter of data">
+	<div class="w3-row w3-center chapter-header">
+		<ul class="w3 ul">
+			<li class="author">
+				<label></label>
+			</li>	
+			<li class="chapter">
+				<label>Chương: {{chapter.number}} - {{chapter.name}}</label>
+			</li>
+			<li id="author">
+				<label></label>
+			</li>
+		</ul>
+		<div class="w3-center chapterbutton">
+			<a (click)="prevChapter(chapter.number)" class="previous">&laquo; Trước					
+			</a>
+			<a class="setting" id="setting">
+				<i class="fa fa-gear"></i>
+				<span>Cài đặt</span>
+			</a>
+			<a (click)="nextChapter(chapter.number)" class="next">Sau &raquo;					
+			</a>
+		</div>		
+	</div>
+	<!-- <div id="setting-box" class="w3-row w3-center w3-animate-opacity">
+		<div class="setting-content">
+			<ul class="w3-ul w3-col">
+				<li class="w3-col">
+					<div class="w3-col setting-left">Màu nền:</div>
+					<div class="w3-col setting-right">
+						<select id="maunen">
+							<option value="FFF">-Chọn-</option>
+							<option value="FFF">Mặc định</option>
+							<option value="F4F4F4">Xám nhạt</option>
+							<option value="E9EBEE">Xanh nhạt</option>
+							<option value="E1E4F2">Xanh đậm</option>
+							<option value="F4F4E4">Vàng nhạt</option>
+							<option value="EAE4D3">Màu sepia</option>
+							<option value="FAFAC8">Vàng đậm</option>
+							<option value="EFEFAB">Vàng ố</option>
+							<option value="262626">Màu tối</option>
+						</select>
+					</div>
+				</li>
+				<li class="w3-col">
+					<div class="w3-col setting-left">Font chữ:</div>
+					<div class="w3-col setting-right">
+						<select id="fontfa">
+							<option value="Palatino Linotype">-Chọn-</option>
+							<option value="Palatino Linotype">Mặc định</option>
+							<option value="Bookerly">Bookerly</option>
+							<option value="Segoe UI">Segoe UI</option>
+							<option value="Patrick Hand">Patrick Hand</option>
+							<option value="Times New Roman">Times New Roman</option>
+							<option value="Verdana">Verdana</option>
+							<option value="Tahoma">Tahoma</option>
+							<option value="Arial">Arial</option>
+						</select>
+					</div>
+				</li>
+				<li class="w3-col">
+					<div class="w3-col setting-left">Chiều cao dòng:</div>
+					<div class="w3-col setting-right">
+						<select id="fonthe">
+							<option value="160">-Chọn-</option>
+							<option value="160">Mặc định</option>
+							<option value="100">100%</option>
+							<option value="120">120%</option>
+							<option value="140">140%</option>
+							<option value="180">180%</option>
+							<option value="200">200%</option>
+						</select>
+					</div>
+				</li>
+				<li class="w3-col">
+					<div class="w3-col setting-left">Kích Cỡ Chữ:</div>
+					<div class="w3-col setting-right">
+						<a onclick="resizeText(+2)"><i class="fa fa-search-plus fa-2x" style="color: #444; margin-left: 70px"></i>
+						</a>
+						<a onclick="resizeText(-2)"><i class="fa fa-search-minus fa-2x" style="color: #444;"></i>
+						</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div> -->
+	<div id="content" class="w3-justify">
+		<div style="white-space:pre-wrap;" [innerHtml]="chapter.content">
+			<!-- <pre>{{chapter.content}}</pre> -->
+		</div>
+	</div>
+	<div class="w3-center chapterbutton">
+		<a (click)="prevChapter(chapter.number)" class="previous">&laquo; Trước					
+		</a>
+		<a (click)="nextChapter(chapter.number)" class="next">Sau &raquo;					
+		</a>
+	</div>
+</div>

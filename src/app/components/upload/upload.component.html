@@ -1,0 +1,9 @@
+<div>
+	<label for="banner">Ảnh bìa</label>
+	<input type="file" name="upload" id="banner" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+</div>
+<div>
+	<img [src]="imageUrl"  style="width: 100%; height: 100%; max-width: 150px;">
+
+</div>
+ <button class="btn btn-primary" type="submit"(click)="summit()">Thêm</button>
